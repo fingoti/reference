@@ -1,0 +1,72 @@
+---
+title: networkTraffic
+---
+
+## networkTraffic {% deviceBadge device="pebl" /%}   {% deviceBadge device="vyne" /%} 
+The number of bytes that have been sent and received from/to the device since being powered up or being cleared. The bytes represent the user data, within the message body and not an individual HTTP packet count.
+
+------------------------------------------------------------------------------------------------------------------
+
+### read
+Read the number of TX and RX bytes sent over the network, since boot, or last user clear
+
+#### Request
+```json
+{
+  "property": "networkTraffic",
+  "operation": 0
+}
+```
+
+#### Response
+```json
+{
+  "success": true,
+  "property": "networkTraffic",
+  "result": {
+    "tx": 0,
+    "rx": 0
+  }
+}
+```
+
+#### Result
+- `tx` - the number of bytes transmitted by the device
+- `rx` - the number of bytes received by the device
+
+------------------------------------------------------------------------------------------------------------------
+
+### write
+Reset the current traffic byte counter back to 0 
+
+#### Request
+```json
+{
+  "property": "networkTraffic",
+  "operation": 1,
+  "payload": {
+     "reset": true
+  }
+}
+```
+
+#### Payload
+- `reset` - use `true` to set the current TX and RX byte counters back to 0 
+
+#### Response
+```json
+{
+  "success": true,
+  "property": "networkTraffic",
+  "result": {
+    "tx": 0,
+    "rx": 0
+  }
+}
+```
+
+#### Result
+- `tx` - the number of bytes transmitted by the device
+- `rx` - the number of bytes received by the device
+
+&nbsp;
